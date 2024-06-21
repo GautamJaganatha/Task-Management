@@ -1,6 +1,8 @@
 package com.Gautam.Task_SpringBoot.services.auth;
 
 import com.Gautam.Task_SpringBoot.Repository.UserRepository;
+import com.Gautam.Task_SpringBoot.dto.SignupRequest;
+import com.Gautam.Task_SpringBoot.dto.UserDto;
 import com.Gautam.Task_SpringBoot.entity.User;
 import com.Gautam.Task_SpringBoot.enums.UserRole;
 import jakarta.annotation.PostConstruct;
@@ -35,5 +37,24 @@ public class AuthServiceImpl implements AuthService {
         }
 
 
+    }
+
+
+    @Override
+    public UserDto SignupRequest(SignupRequest signupRequest) {
+        User user = new User();
+        user.setName(signupRequest.getName());
+        user.setEmail(signupRequest.getEmail());
+        user.setPassword(new BCryptPasswordEncoder().encode(signupRequest.getPassword()));
+        user.setRole(UserRole.EMPLOYEE);
+
+        User createsUser =  userRepository.save(user);
+
+        return createsUser.getUserDto();
+    }
+
+    @Override
+    public boolean hasUserEmail(String email) {
+        return userRepository.findFirstByEmail(email).isPresent();
     }
 }

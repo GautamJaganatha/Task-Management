@@ -1,5 +1,6 @@
 package com.Gautam.Task_SpringBoot.entity;
 
+import com.Gautam.Task_SpringBoot.dto.UserDto;
 import com.Gautam.Task_SpringBoot.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -62,5 +63,16 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+
+    public UserDto getUserDto(){
+        UserDto userDto = new UserDto();
+        userDto.setId(id);
+        userDto.setName(name);
+        userDto.setEmail(email);
+        userDto.setUserRole(role);
+
+        return userDto;
     }
 }
