@@ -8,6 +8,7 @@ import { LoginComponent } from './auth/componenets/login/login.component';
 import { SignupComponent } from './auth/componenets/signup/signup.component';
 import { DemoAngularMaterial } from './DemoAngularMaterial';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     DemoAngularMaterial,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [],

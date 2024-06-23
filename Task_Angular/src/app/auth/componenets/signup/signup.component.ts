@@ -36,7 +36,7 @@ export class SignupComponent {
   }
 
 
-  togglePasswordVisibility() {
+  togglePasswordVisibility(): void {
     this.hidePassword = !this.hidePassword;
     }
 
@@ -45,17 +45,23 @@ export class SignupComponent {
 
 
   onSubmit(){
+    const pass = this.signupForm.get('password')?.value;
+    const confirmPass = this.signupForm.get('confirmPassword')?.value;
+    if(pass !== confirmPass){
+      this.snackbar.open("Password did not match", "Try Again, Close",{ duration:5000});
+    }
     console.log(this.signupForm.value);
-  //   this.auhtService.signup(this.signupForm.value).subscribe(
-  //     (res)=>{
-  //       this.snackbar.open("Sign Up was successfull", "Close",{
-  //         duration:5000
-  //       })
-  //     },
-  //     (error)=>{
-  //       this.snackbar.open("Error")
-  //     }
-  //   )
-  // }
+    this.auhtService.signUp(this.signupForm.value).subscribe(
+      (res) =>{
+        console.log(res);
+        if(res.id != null){
+          this.snackbar.open("Sign Up was Successfull","Close",
+          {duration:5000});
+          this.router.navigateByUrl("/login");
+        }
+        else{
+          this.snackbar.open("Sign Up failed. Try Again", "Close",{duration: 5000, panelClass: 'error-snackbar'});
+        }
+      })
   }
 }

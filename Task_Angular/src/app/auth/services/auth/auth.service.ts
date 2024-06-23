@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
+import { StorageService } from '../storage/storage.service';
 
-const BASIC_URL = "";
+const BASIC_URL = "http://localhost:8084/api/auth/";
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,25 @@ const BASIC_URL = "";
 export class AuthService {
 
   constructor(
-    // private _http: HttpClient
+    private http_ : HttpClient,
+    private userStorage: StorageService,
   ) { }
 
 
-  // signup(signup: any): Observable<any>{
-  //   return this._http.post(BASIC_URL + 'signup',signup);
-  // }
+  signUp(signup: any): Observable<any>{
+    return this.http_.post(BASIC_URL + 'Signup', signup).pipe(
+      catchError((error: HttpErrorResponse) => {
+        // Handle errors here, e.g., log error message or throw a custom error
+        console.error('An error occurred:', error.message);
+        return throwError('Registration failed. Please try again later.');
+  }));
+  }
+
+
+  login(loginForm : any): Observable<any>{
+    return this.http_.post(BASIC_URL + 'login', loginForm);
+  }
+
+
+ 
 }
