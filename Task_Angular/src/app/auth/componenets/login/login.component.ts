@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { StorageService } from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -41,6 +42,32 @@ export class LoginComponent {
 
 
   onSubmit(){
+    console.log(this.loginForm.value);
+    this.authService.login(this.loginForm.value).subscribe(
+      (res) =>{
+        console.log(res);
+        if(res.userId != null){
+          const user = {
+            id : res.userId,
+            role : res.userRole
+          }
+          StorageService.saveToken(res.jwt);
+          StorageService.saveUser(user);
+          if(StorageService.isAdminLoggedIn()){
+            this.router.navigateByUrl("admin/dashboard");
+          }
+          else if(StorageService.isEmployeeLoggedIn()){
+            this.router.navigateByUrl("employee/dashboard");
+          }
 
+
+
+          this.snackbar.open("Sign Up was Successfull","Close",
+          {duration:5000});
+        }
+        else{
+          this.snackbar.open("Sign Up failed. Try Again", "Close",{duration: 5000, panelClass: 'error-snackbar'});
+        }
+      })
   }
 }

@@ -27,7 +27,7 @@ export class AuthService {
 
 
   login(loginForm : any): Observable<any>{
-    return this.http_.post(BASIC_URL + 'login', loginForm);
+    return this.http_.post(BASIC_URL + 'Login', loginForm);
   }
 
 
