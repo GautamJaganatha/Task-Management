@@ -9,12 +9,14 @@ import { SignupComponent } from './auth/componenets/signup/signup.component';
 import { DemoAngularMaterial } from './DemoAngularMaterial';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PostTaskComponent } from './modules/admin/componenets/post-task/post-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
+    PostTaskComponent,
 
   ],
   imports: [
