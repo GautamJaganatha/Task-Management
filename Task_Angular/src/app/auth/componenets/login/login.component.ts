@@ -59,9 +59,6 @@ export class LoginComponent {
           else if(StorageService.isEmployeeLoggedIn()){
             this.router.navigateByUrl("employee/dashboard");
           }
-
-
-
           this.snackbar.open("Sign Up was Successfull","Close",
           {duration:5000});
         }

@@ -30,4 +30,20 @@ export class AdminService {
     {headers: this.createAuthorization()}
     )
   }
+
+  getAllTask():Observable<any>{
+    return this.http_.get(BASIC_URL+'getAllTask',{
+      headers: this.createAuthorization()
+    });
+  }
+
+  deleteTask(id: number){
+    return this.http_.delete(BASIC_URL + 'deleteTask/'+ id,
+    {headers: this.createAuthorization()});
+  }
+
+  getTaskById(id: number){
+    return this.http_.get(BASIC_URL + 'getTaskById/'+ id,
+    {headers: this.createAuthorization()});
+  }
 }

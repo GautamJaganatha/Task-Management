@@ -10,6 +10,8 @@ import { DemoAngularMaterial } from './DemoAngularMaterial';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PostTaskComponent } from './modules/admin/componenets/post-task/post-task.component';
+import { DashboardComponent } from './modules/admin/componenets/dashboard/dashboard.component';
+import { UpdateTaskComponent } from './modules/admin/componenets/update-task/update-task.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { PostTaskComponent } from './modules/admin/componenets/post-task/post-ta
     LoginComponent,
     SignupComponent,
     PostTaskComponent,
+    DashboardComponent,
+    UpdateTaskComponent,
 
   ],
   imports: [
