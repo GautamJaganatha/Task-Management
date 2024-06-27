@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column; /* Change to column to stack elements vertically */
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+h2 {
+    align-self: center;
+    margin: 0 auto 20px auto; /* Center the h2 and add some bottom margin for spacing */
+}
+
+.form-feild {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+button {
+    align-self: center;
+    margin-top: 20px auto 0px auto; /* Add top margin for spacing */
+}

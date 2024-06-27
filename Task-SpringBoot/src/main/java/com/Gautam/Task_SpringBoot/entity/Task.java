@@ -28,7 +28,7 @@ public class Task {
 
 
 
-    @Enumerated(EnumType.STRING)
+
     private TaskStatus taskStatus;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

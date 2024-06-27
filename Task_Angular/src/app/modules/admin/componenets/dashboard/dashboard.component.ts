@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
@@ -14,6 +14,8 @@ import { MatCardModule } from '@angular/material/card';
 export class DashboardComponent {
 
 
+  searchForm! : FormGroup;
+
 
 
   listOfTasks : any = [];
@@ -24,6 +26,9 @@ export class DashboardComponent {
     private router: Router,
     private snackbar: MatSnackBar){
       this.getAllTasks();
+      this.searchForm = this.fb.group({
+        title : [null]
+      })
   }
 
   getAllTasks(){
@@ -42,5 +47,17 @@ export class DashboardComponent {
         this.getAllTasks();
       }
     )
+    }
+
+    searchTask(){
+      this.listOfTasks = [];
+      const tile: any = this.searchForm.get('title').value;
+      console.log(tile);
+      this.adminService.searchTask(tile).subscribe(
+        (res) =>{
+          console.log(res);
+          this.listOfTasks = res;
+        }
+      )
     }
 }

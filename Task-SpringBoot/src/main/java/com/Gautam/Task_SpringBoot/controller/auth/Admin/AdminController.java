@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestClient;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin/")
@@ -46,6 +49,18 @@ public class AdminController {
     @GetMapping("/getTaskById/{id}")
     public ResponseEntity<TaskDto> getTaskById(@PathVariable Long id){
         return ResponseEntity.ok(adminService.getTAskById(id));
+    }
 
+
+    @PutMapping("updateTask/{id}")
+    public ResponseEntity<TaskDto> updateTask(@PathVariable Long id, @RequestBody TaskDto taskDto){
+        TaskDto updatedTAsk = adminService.updateTask(id,taskDto);
+        if (updatedTAsk==null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(updatedTAsk);
+    }
+
+    @GetMapping("task/searchByTitle/{title}")
+    public ResponseEntity<List<TaskDto>> searchTaskByTitle(@PathVariable String title){
+        return ResponseEntity.ok(adminService.searchTaskByTitle(title));
     }
 }
