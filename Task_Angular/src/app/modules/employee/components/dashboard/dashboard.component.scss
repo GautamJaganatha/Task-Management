@@ -1,0 +1,56 @@
+.task-lists {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 20px;
+    justify-content: space-between;
+    min-height: 37vh;
+    padding: 20px;
+  
+    .task-card {
+      width: calc(33.33% - 20px);
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  
+      .task-details {
+        padding: 20px;
+  
+        .task-name {
+          font-size: 20px;
+          font-weight: bolder;
+          color: #108ee9;
+          margin-bottom: 10px;
+        }
+  
+        .task-description {
+          margin-bottom: 10px;
+        }
+      }
+  
+      .task-info {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 8px;
+        font-weight: bolder;
+  
+        .info-row {
+          flex: 0 0 50%;
+          display: flex;
+          align-items: center;
+          margin-bottom: 8px;
+  
+          .info-label {
+            font-size: 14px;  /* Adjust if necessary */
+            margin-right: 5px;
+          }
+  
+          .info-value {
+            font-weight: bold;
+            font-size: 16px;  /* Increase font size */
+          }
+        }
+      }
+    }
+  }
+  

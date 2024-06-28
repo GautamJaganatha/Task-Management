@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostTaskComponent } from './modules/admin/componenets/post-task/post-task.component';
 import { DashboardComponent } from './modules/admin/componenets/dashboard/dashboard.component';
 import { UpdateTaskComponent } from './modules/admin/componenets/update-task/update-task.component';
+import {DashboardComponent as EmployeeDashboardComponent} from './modules/employee/components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { UpdateTaskComponent } from './modules/admin/componenets/update-task/upd
     PostTaskComponent,
     DashboardComponent,
     UpdateTaskComponent,
-
+    EmployeeDashboardComponent,
   ],
   imports: [
     BrowserModule,
