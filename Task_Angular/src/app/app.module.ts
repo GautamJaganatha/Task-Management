@@ -13,6 +13,8 @@ import { PostTaskComponent } from './modules/admin/componenets/post-task/post-ta
 import { DashboardComponent } from './modules/admin/componenets/dashboard/dashboard.component';
 import { UpdateTaskComponent } from './modules/admin/componenets/update-task/update-task.component';
 import {DashboardComponent as EmployeeDashboardComponent} from './modules/employee/components/dashboard/dashboard.component';
+import { ViewTaskDetailsComponent } from './modules/admin/componenets/view-task-details/view-task-details.component';
+import { ViewTaskDetailsComponent as EmployeeViewTaskDetailsComponent} from './modules/employee/components/view-task-details/view-task-details.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import {DashboardComponent as EmployeeDashboardComponent} from './modules/employ
     DashboardComponent,
     UpdateTaskComponent,
     EmployeeDashboardComponent,
+    ViewTaskDetailsComponent,
+    EmployeeViewTaskDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -62,4 +62,24 @@ export class AdminService {
     )
   }
 
+  createComment(id: number,content: string):Observable<any>{
+    const params = {
+      content : content
+    }
+    return this.http_.post(BASIC_URL+  "postComment/"+ id,null,
+    { params: params,
+      headers: this.createAuthorization()}
+    )
+  }
+
+
+
+  getCommentsByTaskId(taskId: number):Observable<any>{
+    return this.http_.get(BASIC_URL+ `getCommentsByTaskId/${taskId}`,{
+      headers: this.createAuthorization()
+    });
+  }
+
+
+
 }

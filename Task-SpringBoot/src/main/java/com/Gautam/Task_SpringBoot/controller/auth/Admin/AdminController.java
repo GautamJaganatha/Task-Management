@@ -1,5 +1,6 @@
 package com.Gautam.Task_SpringBoot.controller.auth.Admin;
 
+import com.Gautam.Task_SpringBoot.dto.CommentDto;
 import com.Gautam.Task_SpringBoot.dto.TaskDto;
 import com.Gautam.Task_SpringBoot.services.admin.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -62,5 +63,18 @@ public class AdminController {
     @GetMapping("task/searchByTitle/{title}")
     public ResponseEntity<List<TaskDto>> searchTaskByTitle(@PathVariable String title){
         return ResponseEntity.ok(adminService.searchTaskByTitle(title));
+    }
+
+    @PostMapping("/postComment/{taskId}")
+    public ResponseEntity<CommentDto> postComment(@PathVariable Long taskId, @RequestParam String content){
+        CommentDto commentDto = adminService.createComment(taskId,content);
+        if (commentDto == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(commentDto);
+    }
+
+    @GetMapping("getCommentsByTaskId/{taskId}")
+    public ResponseEntity<List<CommentDto>> getCommentsByTaskId(@PathVariable Long taskId){
+        return ResponseEntity.ok(adminService.getCommentsByTaskId(taskId));
     }
 }
