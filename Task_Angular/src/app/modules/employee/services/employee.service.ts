@@ -30,4 +30,11 @@ export class EmployeeService {
       headers: this.createAuthorization()
     });
   }
+
+
+  updateStatus(id: number, status: string):Observable<any>{
+    return this.http_.get(BASIC_URL+`updateTask/${id}/${status}`,{
+      headers: this.createAuthorization()
+    });
+  }
 }

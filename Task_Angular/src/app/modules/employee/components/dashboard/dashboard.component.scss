@@ -25,7 +25,7 @@
         .task-description {
           margin-bottom: 10px;
         }
-      }
+      
   
       .task-info {
         display: flex;
@@ -50,6 +50,22 @@
             font-size: 16px;  /* Increase font size */
           }
         }
+    }
+
+    .actions{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+
+        .update-button {
+            margin-right: 10px;
+        }
+
+        .view-button {
+            margin-right: 10px;
+        }
+    }
+
       }
     }
   }
